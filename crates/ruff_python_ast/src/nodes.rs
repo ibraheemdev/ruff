@@ -3426,7 +3426,7 @@ impl From<Identifier> for Name {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Hash)]
 pub enum Singleton {
     None,
     True,
