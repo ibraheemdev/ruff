@@ -1739,9 +1739,9 @@ checksum = "241eaef5fd12c88705a01fc1066c48c4b36e0dd4377dcdc7ec3942cea7a69956"
 
 [[package]]
 name = "lock_api"
-version = "0.4.12"
+version = "0.4.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07af8b9cdd281b7915f413fa73f29ebd5d55d0d3f0155584dade1ff18cea1b17"
+checksum = "96936507f153605bddfcda068dd804796c84324ed2510809e5b2a624c81da765"
 dependencies = [
  "autocfg",
  "scopeguard",
@@ -3282,7 +3282,6 @@ checksum = "28d3b2b1366ec20994f1fd18c3c594f05c5dd4bc44d8bb0c1c632c8d6829481f"
 [[package]]
 name = "salsa"
 version = "0.22.0"
-source = "git+https://github.com/salsa-rs/salsa.git?rev=09627e450566f894956710a3fd923dc80462ae6d#09627e450566f894956710a3fd923dc80462ae6d"
 dependencies = [
  "boxcar",
  "compact_str",
@@ -3306,12 +3305,10 @@ dependencies = [
 [[package]]
 name = "salsa-macro-rules"
 version = "0.22.0"
-source = "git+https://github.com/salsa-rs/salsa.git?rev=09627e450566f894956710a3fd923dc80462ae6d#09627e450566f894956710a3fd923dc80462ae6d"
 
 [[package]]
 name = "salsa-macros"
 version = "0.22.0"
-source = "git+https://github.com/salsa-rs/salsa.git?rev=09627e450566f894956710a3fd923dc80462ae6d#09627e450566f894956710a3fd923dc80462ae6d"
 dependencies = [
  "proc-macro2",
  "quote",
