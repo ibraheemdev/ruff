@@ -16,6 +16,16 @@ use crate::{db::Db, module_resolver::file_to_module};
 #[derive(Clone, Debug, Eq, PartialEq, Hash, PartialOrd, Ord)]
 pub struct ModuleName(compact_str::CompactString);
 
+impl get_size2::GetSize for ModuleName {
+    fn get_heap_size(&self) -> usize {
+        if self.0.is_heap_allocated() {
+            self.0.capacity()
+        } else {
+            0
+        }
+    }
+}
+
 impl ModuleName {
     /// Creates a new module name for `name`. Returns `Some` if `name` is a valid, absolute
     /// module name and `None` otherwise.

@@ -172,6 +172,9 @@ pub struct GenericAlias<'db> {
     pub(crate) specialization: Specialization<'db>,
 }
 
+// The Salsa heap is tracked separately.
+impl get_size2::GetSize for GenericAlias<'_> {}
+
 impl<'db> GenericAlias<'db> {
     pub(super) fn normalized(self, db: &'db dyn Db) -> Self {
         Self::new(db, self.origin(db), self.specialization(db).normalized(db))
@@ -221,7 +224,17 @@ impl<'db> From<GenericAlias<'db>> for Type<'db> {
 /// Represents a class type, which might be a non-generic class, or a specialization of a generic
 /// class.
 #[derive(
-    Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd, salsa::Supertype, salsa::Update,
+    Clone,
+    Copy,
+    Debug,
+    Eq,
+    Hash,
+    Ord,
+    PartialEq,
+    PartialOrd,
+    salsa::Supertype,
+    salsa::Update,
+    get_size2::GetSize,
 )]
 pub enum ClassType<'db> {
     NonGeneric(ClassLiteral<'db>),
@@ -687,6 +700,9 @@ pub struct ClassLiteral<'db> {
     pub(crate) dataclass_params: Option<DataclassParams>,
     pub(crate) dataclass_transformer_params: Option<DataclassTransformerParams>,
 }
+
+// The Salsa heap is tracked separately.
+impl get_size2::GetSize for ClassLiteral<'_> {}
 
 #[expect(clippy::trivially_copy_pass_by_ref, clippy::ref_option)]
 fn pep695_generic_context_cycle_recover<'db>(

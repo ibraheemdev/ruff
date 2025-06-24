@@ -70,8 +70,12 @@ pub(super) struct ProtocolInterfaceMembers<'db> {
     inner: BTreeMap<Name, ProtocolMemberData<'db>>,
 }
 
+impl get_size2::GetSize for ProtocolInterfaceMembers<'_> {}
+
 /// The interface of a protocol: the members of that protocol, and the types of those members.
-#[derive(Copy, Clone, Debug, Eq, PartialEq, Hash, salsa::Update, PartialOrd, Ord)]
+#[derive(
+    Copy, Clone, Debug, Eq, PartialEq, Hash, salsa::Update, PartialOrd, Ord, get_size2::GetSize,
+)]
 pub(super) enum ProtocolInterface<'db> {
     Members(ProtocolInterfaceMembers<'db>),
     SelfReference,

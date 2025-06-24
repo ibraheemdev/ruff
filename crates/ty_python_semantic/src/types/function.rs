@@ -124,6 +124,8 @@ bitflags! {
     }
 }
 
+impl get_size2::GetSize for DataclassTransformerParams {}
+
 impl Default for DataclassTransformerParams {
     fn default() -> Self {
         Self::EQ_DEFAULT
@@ -522,6 +524,9 @@ pub struct FunctionType<'db> {
     #[returns(deref)]
     type_mappings: Box<[TypeMapping<'db, 'db>]>,
 }
+
+// The Salsa heap is tracked separately.
+impl get_size2::GetSize for FunctionType<'_> {}
 
 #[salsa::tracked]
 impl<'db> FunctionType<'db> {

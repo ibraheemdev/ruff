@@ -18,7 +18,7 @@ pub(crate) use implicit_globals::{
     module_type_implicit_global_declaration, module_type_implicit_global_symbol,
 };
 
-#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Hash, PartialEq, Eq, get_size2::GetSize)]
 pub(crate) enum Boundness {
     Bound,
     PossiblyUnbound,
@@ -50,7 +50,7 @@ impl Boundness {
 /// possibly_unbound:  Place::Type(Type::IntLiteral(2), Boundness::PossiblyUnbound),
 /// non_existent:      Place::Unbound,
 /// ```
-#[derive(Debug, Clone, PartialEq, Eq, salsa::Update)]
+#[derive(Debug, Clone, PartialEq, Eq, salsa::Update, get_size2::GetSize)]
 pub(crate) enum Place<'db> {
     Type(Type<'db>, Boundness),
     Unbound,
@@ -468,7 +468,7 @@ pub(crate) type PlaceFromDeclarationsResult<'db> =
 /// that this comes with a [`CLASS_VAR`] type qualifier.
 ///
 /// [`CLASS_VAR`]: crate::types::TypeQualifiers::CLASS_VAR
-#[derive(Debug, Clone, PartialEq, Eq, salsa::Update)]
+#[derive(Debug, Clone, PartialEq, Eq, salsa::Update, get_size2::GetSize)]
 pub(crate) struct PlaceAndQualifiers<'db> {
     pub(crate) place: Place<'db>,
     pub(crate) qualifiers: TypeQualifiers,

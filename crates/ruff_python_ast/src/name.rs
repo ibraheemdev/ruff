@@ -12,6 +12,17 @@ use crate::generated::ExprName;
 #[cfg_attr(feature = "salsa", derive(salsa::Update))]
 pub struct Name(compact_str::CompactString);
 
+#[cfg(feature = "get-size")]
+impl get_size2::GetSize for Name {
+    fn get_heap_size(&self) -> usize {
+        if self.0.is_heap_allocated() {
+            self.0.capacity()
+        } else {
+            0
+        }
+    }
+}
+
 impl Name {
     #[inline]
     pub fn empty() -> Self {
